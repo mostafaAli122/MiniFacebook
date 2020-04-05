@@ -131,7 +131,9 @@ namespace MiniFacebook.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CommentDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2020, 4, 5, 11, 5, 10, 889, DateTimeKind.Local).AddTicks(1174));
 
                     b.Property<int>("CommentState")
                         .ValueGeneratedOnAdd()
@@ -206,7 +208,9 @@ namespace MiniFacebook.Migrations
                         .HasDefaultValue(0);
 
                     b.Property<DateTime>("PostDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2020, 4, 5, 11, 5, 10, 886, DateTimeKind.Local).AddTicks(8865));
 
                     b.Property<string>("PostPhoto")
                         .HasColumnType("nvarchar(max)");

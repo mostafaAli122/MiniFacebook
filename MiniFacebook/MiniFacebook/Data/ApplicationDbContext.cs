@@ -35,6 +35,7 @@ namespace MiniFacebook.Data
             modelBuilder.Entity<Comment>()
                         .Property(c => c.CommentState)
                         .HasDefaultValue(State.visible);
+            
 
         }
         public DbSet<Friend> Friends { get; set; }

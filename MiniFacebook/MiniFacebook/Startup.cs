@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MiniFacebook.Models.Entities;
+using MiniFacebook.Models.RepoInterface;
+using MiniFacebook.Models.RepoClass;
 
 namespace MiniFacebook
 {
@@ -38,6 +40,13 @@ namespace MiniFacebook
             services.AddIdentity<User, Role>(options=> {
                 options.Password.RequireNonAlphanumeric = false;
             }).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI();
+            services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<IPostRepo, PostRepo>();
+            services.AddScoped<ICommentRepo, CommentRepo>();
+            services.AddScoped<ICommentLikeRepo, CommentLikeRepo>();
+            services.AddScoped<IPostLikeRepo, PostLikeRepo>();
+            services.AddScoped<IFriendRepo, FriendRepo>();
+            services.AddScoped<IRoleRepo, RoleRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
